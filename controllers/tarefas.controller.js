@@ -30,6 +30,7 @@ class TarefasController{
     }
 
     editTarefa = async (req,res) => {
+        console.log(req.body);
         await tarefasService.edit(req.params.id, req.body)
         .then(() => {
             res.status(201).send({message:"Tarefa editada com sucesso"})
@@ -44,7 +45,7 @@ class TarefasController{
     deleteTarefa = async (req,res) => {
         await tarefasService.delete(req.params.id)
         .then(() => {
-            res.status(204).send();
+            res.status(200).send({message:"Excluido com sucesso"});
         })
         .catch(err => {
             console.error(err);
